@@ -8,7 +8,13 @@ socket.on('clear-display', function() {
   circles.innerHTML = '';
 });
 
+socket.on('update-player-list', function(data) {
+  players.innerHTML = data.map(player => `<li>${player}</li>`).join('');
+});
+
 const circles = document.getElementById('circles');
+const players = document.getElementById('players');
+
 let initials = '';
 
 // Listen for clicks anywhere in the "section"
@@ -29,6 +35,8 @@ document.querySelector('button').addEventListener('click', function() {
 do {
   initials = getInitials();
 } while (initials.length < 2 || initials.length > 3);
+
+socket.emit('register-player', initials);
 
 function getInitials() {
   const input = prompt("Please enter your initials");
