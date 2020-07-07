@@ -1,7 +1,7 @@
 const socket = io();
 
 socket.on('add-circle', function(data) {
-  console.log(data);
+  addCircle(data);
 });
 
 const circles = document.getElementById('circles');
@@ -9,7 +9,6 @@ let initials = '';
 
 // Listen for clicks anywhere in the "section"
 circles.addEventListener('click', function(evt) {
-  // addCircle(evt.clientX, evt.clientY, randomBetween(25,125), getRandomRGBA());
   socket.emit('add-circle', {
     initials,
     x: evt.clientX,
@@ -32,7 +31,7 @@ function getInitials() {
   return input ? input.toUpperCase() : '';
 }
 
-function addCircle(x, y, dia, rgba) {
+function addCircle({x, y, dia, rgba, initials}) {
   const el = document.createElement('div');
   el.style.left = x - Math.floor(dia / 2 + 0.5) + 'px';
   el.style.top = y - Math.floor(dia / 2 + 0.5) + 'px';
