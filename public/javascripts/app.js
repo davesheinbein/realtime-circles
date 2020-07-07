@@ -3,7 +3,7 @@ let initials = '';
 
 // Listen for clicks anywhere in the "section"
 circles.addEventListener('click', function(evt) {
-  addCircle(evt.clientX, evt.clientY, randomBetween(10,125), getRandomRGBA());
+  addCircle(evt.clientX, evt.clientY, randomBetween(25,125), getRandomRGBA());
 });
 
 document.querySelector('button').addEventListener('click', function() {
