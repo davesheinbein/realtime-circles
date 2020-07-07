@@ -7,7 +7,9 @@ io.on('connection', function(socket) {
   });
 
   // Listen for other messages from clients below
-  
+  socket.on('clear-display', function() {
+    io.emit('clear-display');
+  });
 
 
 
