@@ -1,3 +1,5 @@
+Code Along Lesson
+
 ### Sync your code with:
 
 1. `git fetch --all`
